@@ -7,7 +7,6 @@ public class CardGame {
         try
         {
         int i;
-             
         String cards[] = new String[52];          // array for storing original cards.
         String afterShuffle[] = new String[52];   // array for storing after shuffle.
         
@@ -17,21 +16,17 @@ public class CardGame {
         for(i=0;i<4;i++)
             System.out.println(cards[i]);
         
-
         Shuffle ob2 = new Shuffle();
         afterShuffle = ob2.shuffle(cards);
         System.out.println("First four card with shuffling are :");
 
         for(i=0;i<4;i++)
             System.out.println(afterShuffle[i]);
-        
         }
-        
         catch(Exception e)
         {
         }
     }
-    
 }
 
  class init
@@ -152,6 +147,4 @@ class Shuffle
         }
         return a;   
     }
-    
-    
 }
