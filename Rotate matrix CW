@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+    char again;
+    int i,j,m,n,row,column;
+    int arr[100][100],arr2[100][100];
+
+    printf("Enter size of square matrix");
+    scanf("%d",&row);
+
+    //reading elements of array.
+    printf("Enter elements in array.");
+    for(i=0;i<row;i++)
+        for(j=0;j<row;j++)
+         scanf("%d",&arr[i][j]);
+
+    printf("Initial array is...\n");
+
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<row;j++)
+        printf("%d ",arr[i][j]);
+
+        printf("\n");
+    }
+
+    // Assignment for the rotated matrix.
+    while(1)
+    {
+        for(j=0,m=0;j<row,m<row;j++,m++)
+        {
+            for(i=row-1,n=0;i>=0,n<row;i--,n++)
+                arr2[m][n] = arr[i][j];
+        }
+
+        printf("Rotated Matrix is :\n");
+
+        for(i=0;i<row;i++)
+        {
+            for(j=0;j<row;j++)
+             printf("%d ",arr2[i][j]);
+             printf("\n");
+        }
+        printf("Do you want to rotate again?(y/n)");
+        scanf(" %c",&again);
+        if(again == 'y')
+        {
+            for(i=0;i<row;i++)
+            for(j=0;j<row;j++)
+             arr[i][j] = arr2[i][j];
+        }
+        else
+            break;
+    }
+}
