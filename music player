@@ -1,0 +1,65 @@
+from pygame import mixer
+mixer.init()
+
+
+print("1.Khoya Khoya_320(bossmobi).mp3")
+print("2.Dekha Hazaro Dafaa_320(bossmobi)")
+print("3.Tu Chale")
+print("4.Uff Teri Adaa(bossmobi)")
+print("5.bom_bidi_bom_")
+choice = int(input("Choose from the list: "))
+
+def music_player(choice):             
+    
+    # Enter path of all songs.
+    list = ["path of song1","path of song2",
+            "path of song3"]
+    
+    while(choice > len(list)):
+        print("Please choose from the list.")
+        choice = int(input("Re-enter your choice :"))
+    volume=0.1
+    mixer.music.load(list[choice-1])
+    mixer.music.set_volume(volume)
+    mixer.music.play()
+
+    while True:
+        print("PAUSE     ||: 'space + enter'")
+        print("PLAY      |>: 'Doublespace + enter'")
+        print("EXIT      X : 'e + enter'")
+        print("NEXT      >>: 'n + enter'")
+        print("PREVIOUS  <<: 'p + enter'")
+        print("INC_VOLUME ^: 'i + enter'")
+        print("DEC_VOLUME v: 'd + enter'")
+
+        query = input("-> ")
+
+        if query == ' ':
+            mixer.music.pause()
+        elif query == '  ':
+            mixer.music.unpause()
+        elif query == 'e':
+            mixer.music.stop()
+            break
+        elif query == 'n':
+            if(choice<len(list):
+                choice+=1
+                music_player(choice)
+            else:
+                print("List has no further song.")
+        elif query == 'p':
+            if(choice>0):
+                choice-=1
+                music_player(choice)
+            else:
+                print("No previous song.")
+        elif query == 'i':
+            volume+=0.2
+            mixer.music.set_volume(volume)
+        elif query == 'd':
+            volume-=0.2
+            mixer.music.set_volume(volume)
+        else:
+            break
+
+music_player(choice)
