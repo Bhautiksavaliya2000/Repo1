@@ -1,0 +1,54 @@
+#In this version of game the choice happens randomly by the program as it is not fair to decide second player to 
+#choose after first player has choosen anyone of them.
+
+import numpy as np
+
+player1 = input("Enter player1's name :")
+player2 = input("Enter player2's name :")
+
+def thegame():
+    def choose(no):
+        switch = {
+            1: "Rock",
+            2: "Paper",
+            3: "scissor"
+        }
+        return switch[no]
+    ch = input("Hit space+enter to play")
+
+    if ch == ' ':
+        no1 = int(np.random.randint(1,3,1))
+        cho1 = choose(no1)
+        int2 = int(np.random.randint(1,3,1))
+        cho2 = choose(int2)
+        print("-->",player1,"got",cho1)
+        print("-->",player2,"got",cho2)
+    else:
+        print("invalid input")
+        
+    # The decision of game.
+
+    if cho1 == cho2:
+        print("Game is tied.Try once again.")
+        thegame()
+        
+    elif cho1 != cho2:
+        if cho1=="Rock" and cho2=="Paper":
+            print(player2,"won the game")
+        elif cho1=="Paper" and cho2=="Rock":
+            print(player1,"won the game")
+    
+        elif cho1=="Paper" and cho2=="Scissor":
+            print(player2,"won the game ")
+        elif cho1=="Scissor" and cho2=="Paper":
+            print(player1,"won the game ")
+    
+        elif cho1=="Rock" and cho2=="Scissor":
+            print(player1,"won the game ")
+        elif cho1=="Scissor" and cho2=="Rock":
+            print(player2,"won the game")
+
+thegame()
+
+
+
